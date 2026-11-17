@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Tienda - Carrito</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <a href="index.html">La Trastienda</a>
+    <h1>Mi cesta · 2 artículos</h1>
+  </header>
+
+  <main>
+    <section>
+      <h2>Artículos seleccionados</h2>
+      <article class="card">
+        <img src="img/portada1.webp" alt="Portada de La paciente silenciosa">
+        <div>
+          <h3>La paciente silenciosa</h3>
+          <p>Alex Michaelides · Tapa dura</p>
+          <div>
+            <button type="button" aria-label="Disminuir cantidad de La paciente silenciosa">-</button>
+            <span>1</span>
+            <button type="button" aria-label="Aumentar cantidad de La paciente silenciosa">+</button>
+          </div>
+          <p>19,90 €</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="img/portada2.jpg" alt="Portada de El silencio de la ciudad blanca">
+        <div>
+          <h3>El silencio de la ciudad blanca</h3>
+          <p>Eva García Sáenz de Urturi · Ebook</p>
+          <div>
+            <button type="button" aria-label="Disminuir cantidad de El silencio de la ciudad blanca">-</button>
+            <span>1</span>
+            <button type="button" aria-label="Aumentar cantidad de El silencio de la ciudad blanca">+</button>
+          </div>
+          <p>9,99 €</p>
+        </div>
+      </article>
+    </section>
+
+    <section id="resumen">
+      <h2>Resumen</h2>
+      <p>Subtotal <span>29,89 €</span></p>
+      <p>Envío <span>Gratis</span></p>
+      <p>Total <span>29,89 €</span></p>
+      <button id="tramitar-pedido" type="button">Tramitar pedido</button>
+    </section>
+  </main>
+
+  <nav id="navegacion" aria-label="Secciones de la app">
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="explorar.html">Explorar</a></li>
+      <li><a href="carrito.html" aria-current="page">Cesta</a></li>
+      <li><a href="perfil.html">Perfil</a></li>
+    </ul>
+  </nav>
+</body>
+</html>
