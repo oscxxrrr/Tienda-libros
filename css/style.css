@@ -1,3 +1,6 @@
+/* ==========================================================
+   ESTILOS GENERALES
+   ========================================================== */
 header {
     padding: 1rem;
 }
@@ -18,8 +21,7 @@ img {
 
 #resumen p {
     font-size: 1.2rem;
-    margin: 10px 0;
-    margin-bottom: 20px;
+    margin: 10px 0 20px;
 }
 
 #resumen span {
@@ -29,18 +31,20 @@ img {
 
 html {
     font-family: Calibri, sans-serif;
-    background-color: #abacab;
-    color: #333;
+    background-color: var(--bg-page, #abacab);
+    color: var(--text-main, #333);
 }
 
 a {
     text-decoration: none;
-    color: #333;
-}
+    color: var(--text-main, #333);
+    transition: color 0.2s ease;
 
-#navegacion {
-    background-color: #f2f2f2;
-    margin-top: 20px;
+    &:hover,
+    &:focus-visible {
+        color: #000000;
+        font-weight: bold;
+    }
 }
 
 ul {
@@ -50,43 +54,90 @@ ul {
     margin: 0;
 }
 
-#añadir-cesta {
-    margin-bottom: 20px;
-}
-
+#añadir-cesta,
 #tramitar-pedido {
     margin-bottom: 20px;
 }
 
 /* ==========================================================
-   REGLAS DE LA PRÁCTICA (UD4)
+   REGLAS DE LA PRÁCTICA (EJ2)
    ========================================================== */
 
 /* 1. Pestaña activa (Color primario y negrita) */
 nav a[aria-current="page"] {
-    color: #0056b3;
+    color: #000000;
     font-weight: bold;
 }
 
-/* 2. Resto de enlaces de la barra (Gris + hover + focus-visible con anillo) */
+/* 2. Resto de enlaces de la barra (Gris por defecto) */
 nav a:not([aria-current="page"]) {
     color: #6b7280;
 }
 
-nav a:hover,
+/* 3. Hover y focus para los enlaces que NO están activos */
+nav a:not([aria-current="page"]):hover,
+nav a:not([aria-current="page"]):focus-visible {
+    color: #000000;
+    font-weight: bold;
+}
+
 nav a:focus-visible {
-    color: #0056b3;
     outline: 2px solid #0056b3;
     outline-offset: 2px;
 }
 
-/* 3. Estilos de las Tarjetas (.card) y primera tarjeta tras h2 */
+/* 4. Estilos de las Tarjetas (.card) y primera tarjeta tras h2 */
 .card {
-    background-color: #ffffff;
-    border: 1px solid #cccccc;
+    background-color: var(--bg-surface, #ffffff);
+    border: 1px solid var(--border-subtle, #cccccc);
     border-radius: 6px;
     padding: 1rem;
     margin-bottom: 1rem;
+    color: var(--text-main, #333);
+    transition: box-shadow 0.2s ease;
+
+    &:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    h3 {
+        margin: 0 0 0.5rem;
+        font-size: 1.1rem;
+
+        a {
+            color: var(--text-main, #333);
+            &:hover { color: var(--brand, #0056b3); }
+        }
+    }
+
+    p {
+        color: var(--text-muted, #6b7280);
+        margin: 0.25rem 0;
+    }
+
+    p:nth-of-type(2) {
+        font-weight: 700;
+        color: var(--text-main, #333);
+    }
+
+    button {
+        background-color: var(--brand, #0056b3);
+        color: #ffffff;
+        border: none;
+        border-radius: 4px;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        font-weight: bold;
+        margin-top: 0.5rem;
+
+        &:hover {
+            background-color: var(--color-primary-600, #1d4ed8);
+        }
+    }
+
+    .badge:empty {
+        display: none;
+    }
 }
 
 h2 + .card {
@@ -94,20 +145,98 @@ h2 + .card {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* 4. Badges: Ocultar vacíos y resaltar tarjetas con badge visible */
-.badge:empty {
-    display: none;
+/* 5. Badges: Ocultar vacíos y resaltar tarjetas con badge visible */
+article {
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+
+    &:has(.badge:not(:empty)) {
+        position: relative;
+        border: 2px solid #e67e22;
+    }
+
+    &:hover {
+        background-color: var(--bg-surface, #ffffff);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
 }
 
-article:has(.badge:not(:empty)) {
-    position: relative;
-    border: 2px solid #e67e22;
-}
-
-/* 5. Botones de icono */
+/* 6. Botones de icono */
 button[aria-label] {
     background: transparent;
     border: none;
     cursor: pointer;
     font-size: 1.1rem;
+}
+
+/* ==========================================================
+   EJ4: Variables CSS, color moderno y anidamiento
+   ========================================================== */
+
+/* 1. Tokens globales y variables en :root */
+:root {
+  --color-primary-50:  #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #2563eb;
+  --color-primary-600: #1d4ed8;
+  --color-primary-700: #1d40af;
+  --color-primary-800: #1e3a8a;
+  --color-primary-900: #172554;
+
+  --color-neutral-50:  #f8fafc;
+  --color-neutral-100: #f1f5f9;
+  --color-neutral-200: #e2e8f0;
+  --color-neutral-300: #cbd5e1;
+  --color-neutral-500: #6b7280;
+  --color-neutral-800: #1e293b;
+  --color-neutral-900: #0f172a;
+
+  /* Color moderno OKLCH (experimento de acento) */
+  --color-accent-oklch: oklch(0.65 0.24 40);
+
+  /* Mapeo de variables semánticas */
+  --bg-page:        #abacab;
+  --bg-surface:     #ffffff;
+  --bg-nav:         #f2f2f2;
+  --text-main:      #333333;
+  --text-muted:     var(--color-neutral-500);
+  --border-subtle:  #cccccc;
+  --brand:          #0056b3;
+}
+
+/* 2. Barra de navegación con anidamiento nativo */
+#navegacion {
+  background-color: var(--bg-nav);
+  margin-top: 20px;
+
+  ul {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+  }
+
+  a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease, font-weight 0.2s ease;
+
+    &[aria-current="page"] {
+      color: #000000;
+      font-weight: bold;
+    }
+
+    &:not([aria-current="page"]):hover,
+    &:not([aria-current="page"]):focus-visible {
+      color: #000000;
+      font-weight: bold;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--brand);
+      outline-offset: 2px;
+    }
+  }
 }
